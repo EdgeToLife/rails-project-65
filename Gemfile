@@ -31,6 +31,8 @@ gem "jbuilder"
 
 gem "sentry-ruby"
 gem "sentry-rails"
+
+gem 'slim-rails', '~> 3.6', '>= 3.6.3'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
