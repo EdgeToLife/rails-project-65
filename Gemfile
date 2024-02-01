@@ -33,6 +33,10 @@ gem "sentry-ruby"
 gem "sentry-rails"
 
 gem 'slim-rails', '~> 3.6', '>= 3.6.3'
+
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -54,6 +58,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'faker'
+  gem 'dotenv'
+  gem 'byebug'
 end
 
 group :development do
