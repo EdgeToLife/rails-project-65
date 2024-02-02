@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+    models:
+      user: 'Пользователь'
+  back: 'Назад'
+  back_to_posts: 'Назад к постам'
+  blog_title: 'Коллективный блог'
+  category: 'Категория'
+  comments: 'Комментарии'
+  content: 'Содержимое'
+  create_post: 'Создать пост'
+  hexlet_copyright: '© Хекслет'
+  leave_comment: 'Оставить комментарий'
+  liked: 'Понравилось: '
+  login: 'Войти'
+  logout: 'Выйти'
+  logout_confirmation: 'Вы действительно хотите выйти?'
+  new_post: 'Новый пост'
+  posts:
+    comments:
+      create_success: 'Комментарий успешно создан.'
+      create_error: 'Ошибка при добавлении комментария.'
+      destroy_success: 'Комментарий успешно удален.'
+      update_success: 'Комментарий успешно обновлен.'
+    post_title: 'Пост'
+    create_success: 'Пост успешно создан.'
+    destroy_success: 'Пост успешно удален.'
+    update_success: 'Пост успешно обновлен.'
+  respond: 'ответить'
+  profile: 'Профиль'
+  registration: 'Зарегистрироваться'
+  site_title: 'Блог'
+  title: 'Заголовок'
