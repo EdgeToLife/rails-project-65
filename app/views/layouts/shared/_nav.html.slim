@@ -8,8 +8,7 @@
         div
           #navbarToggler.collapse.navbar-collapse
             ul.nav.nav-pills.flex-grow-1.navbar-nav
-              = link_to auth_request_path('github'), data: { turbo_method: :post }, class: 'nav-link link-dark' do
-                  = 'Войти'
+              = button_to 'Войти', auth_request_path('github'), data: { turbo: false }, method: :post, form: { class: 'nav-link link-dark' }
               / - if user_signed_in?
               /   li.nav-link.disabled
               /     = current_user.email
