@@ -35,6 +35,13 @@ gem "bootsnap", require: false
 
 gem 'rails-i18n'
 
+gem 'active_storage_validations'
+# gem 'aws-sdk-s3'
+gem 'file_validators'
+gem 'image_processing'
+
+gem 'simple_form', '~> 5.3'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'

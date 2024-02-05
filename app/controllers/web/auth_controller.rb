@@ -1,5 +1,4 @@
 class Web::AuthController < ApplicationController
-
   def callback
     user, is_new = authenticate_user(auth)
 
@@ -48,11 +47,4 @@ class Web::AuthController < ApplicationController
     [user, is_new]
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end
-
-  def user_signed_in?
-    !!current_user
-  end
 end

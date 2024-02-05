@@ -1,0 +1,5 @@
+h2
+  = t('bulletins.bulletins')
+#bulletins
+  - @bulletins.each do |bulletin|
+    == render 'bulletin', bulletin: bulletin

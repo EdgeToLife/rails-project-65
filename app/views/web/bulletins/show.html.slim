@@ -1,0 +1,11 @@
+.card.mb-3
+  .card-body
+    h4
+      =< @bulletin.title
+    p
+      =< @bulletin.description
+    .d-flex.justify-content-between.small.text-muted.align-items-end
+      div
+        span.me-2
+          = @bulletin.creator.name
+
