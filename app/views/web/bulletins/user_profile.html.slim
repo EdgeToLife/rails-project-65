@@ -1,0 +1,26 @@
+h2
+  = t('.my_bulletins')
+p
+table.table.table-striped.table-borderless
+  thead
+    tr
+      th.text-bold = t('.name')
+      th.text-bold = t('.state')
+      th.text-bold = t('.create_at')
+      th.text-bold = t('.actions')
+  tbody
+    - @user_bulletins.each do |bulletin|
+      tr
+        td = bulletin.title
+        td = t(bulletin.state)
+        td = time_ago_in_words(bulletin.created_at)
+        td
+          = link_to t('.show'), bulletin_path(bulletin), class: 'me-2'
+          - if bulletin.may_to_moderate?
+            = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
+          / - if bulletin.may_publish?
+          /   = link_to t('.publish'), publish_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
+          / - if bulletin.may_reject?
+          /   = link_to t('.reject'), reject_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2 text-danger'
+          - if bulletin.may_archive?
+            = link_to t('.archive'), archive_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2 text-danger'

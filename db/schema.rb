@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_06_074406) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_06_084051) do
   create_table "bulletins", force: :cascade do |t|
     t.string "title", limit: 50
     t.text "description", limit: 1000
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_074406) do
     t.datetime "updated_at", null: false
     t.integer "category_id", null: false
     t.integer "creator_id", null: false
+    t.string "state"
     t.index ["category_id"], name: "index_bulletins_on_category_id"
     t.index ["creator_id"], name: "index_bulletins_on_creator_id"
   end

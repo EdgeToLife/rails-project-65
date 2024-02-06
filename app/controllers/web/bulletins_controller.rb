@@ -1,6 +1,6 @@
 class Web::BulletinsController < ApplicationController
   def index
-    @bulletins = Bulletin.includes(:creator).order('created_at DESC')
+    @bulletins = Bulletin.where(state: 'published').includes(:creator).order('created_at DESC')
   end
 
   def new
@@ -30,6 +30,44 @@ class Web::BulletinsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def user_profile
+    @user_bulletins = current_user.bulletins.order('created_at DESC')
+  end
+
+  def admin
+    @bulletins = Bulletin.includes(:creator).order('created_at DESC')
+  end
+
+  def to_moderate
+    @bulletin = Bulletin.find(params[:id])
+    if @bulletin.aasm.current_state == :draft
+        @bulletin.to_moderate!
+    end
+    redirect_to user_profile_path
+  end
+
+  def publish
+    @bulletin = Bulletin.find(params[:id])
+    if @bulletin.aasm.current_state == :under_moderation
+      @bulletin.publish!
+    end
+    redirect_to user_profile_path
+  end
+
+  def archive
+    @bulletin = Bulletin.find(params[:id])
+    @bulletin.archive!
+    redirect_to user_profile_path
+  end
+
+  def reject
+    @bulletin = Bulletin.find(params[:id])
+    if @bulletin.aasm.current_state == :under_moderation
+      @bulletin.reject!
+    end
+    redirect_to user_profile_path
   end
 
   private

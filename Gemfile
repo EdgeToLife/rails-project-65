@@ -44,11 +44,15 @@ gem 'simple_form', '~> 5.3'
 
 gem 'pundit'
 
+gem 'aasm'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'
   gem 'dotenv'
   gem 'byebug'
+  gem 'rubocop-rails'
+  gem 'slim_lint'
 end
 
 group :development do
