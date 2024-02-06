@@ -42,6 +42,8 @@ gem 'image_processing'
 
 gem 'simple_form', '~> 5.3'
 
+gem 'pundit'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'
