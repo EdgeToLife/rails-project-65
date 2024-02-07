@@ -1,2 +1,4 @@
-h1 Bulletins#edit
-p Find me in app/views/bulletins/edit.html.slim
+h1
+  = t('edit_bulletin')
+
+== render 'form', bulletin: @bulletin

@@ -1,11 +1,22 @@
 ru:
   activerecord:
+    attributes:
+      bulletin:
+        state:
+          draft: 'Черновик'
+          under_moderation: 'На модерации'
+          published: 'Опубликовано'
+          rejected: 'Отклонено'
+          archived: 'В архиве'
     models:
+      bulletin: 'Объявление'
+      category: 'Категория'
       user: 'Пользователь'
+  admin: 'Админка'
   back: 'Назад'
   back_to_bulletins: 'Назад к объявлениям'
   blog_title: 'Коллективный блог'
-  bulletins: 'Объявления'    
+  bulletins: 'Объявления'
   category: 'Категория'
   comments: 'Комментарии'
   content: 'Содержимое'
@@ -23,9 +34,44 @@ ru:
   registration: 'Зарегистрироваться'
   site_title: 'Доска объявлений'
   title: 'Заголовок'
+  user_bulletin: 'Мои объявления'
   web:
-    bulletins:
+    admin:
+      bulletins:
+        admin:
+          actions: 'Действия'
+          all_states: 'Все'
+          archive: 'Архивировать'
+          create_at: 'Дата создания'
+          edit: 'Редактировать'
+          bulletins: 'Объявления на модерации'
+          name: 'Название'
+          publish: 'Опубликовать'
+          published: 'Опубликовано'
+          reset_search: 'Сброс'
+          reject: 'Отклонить'
+          search: 'Искать'
+          show: 'Показать'
+          state: 'Состояние'
       bulletin_title: 'Объявление'
       create_success: 'Объявление успешно создано.'
       destroy_success: 'Объявление успешно удалено.'
+      index:
+        all_categories: 'Все'
+        reset_search: 'Сброс'
+        search: 'Искать'
+        title: 'Объявления'
       update_success: 'Объявление успешно обновлено.'
+      user_profile:
+        actions: 'Действия'
+        all_states: 'Все'
+        archive: 'Архивировать'
+        create_at: 'Дата создания'
+        edit: 'Редактировать'
+        my_bulletins: 'Мои объявления'
+        name: 'Название'
+        published: 'Опубликовано'
+        reset_search: 'Сброс'
+        search: 'Искать'
+        show: 'Показать'
+        state: 'Состояние'

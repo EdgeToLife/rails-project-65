@@ -46,6 +46,8 @@ gem 'pundit'
 
 gem 'aasm'
 
+gem 'ransack'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'

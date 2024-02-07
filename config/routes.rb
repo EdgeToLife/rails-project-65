@@ -4,13 +4,19 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   scope module: :web do
+    root 'bulletins#index'
+
     post '/auth/:provider', to: 'auth#request', as: :auth_request
     get '/auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     delete '/auth', to: 'auth#destroy', as: :destroy_user_session
-    get '/profile', to: 'bulletins#user_profile', as: :user_profile
-    get '/admin', to: 'bulletins#admin'
 
-    resources :bulletins, only: %i[index new create show edit destroy] do
+    namespace :admin do
+      get '/', to: 'admin#index', as: 'profile'
+    end
+
+    get '/profile', to: 'user#user_profile', as: 'user_profile'
+
+    resources :bulletins, only: %i[new create edit update], shallow: true do
       member do
         patch :to_moderate
         patch :publish
@@ -18,8 +24,7 @@ Rails.application.routes.draw do
         patch :archive
       end
     end
-  end
 
-  # Defines the root path route ("/")
-  root "web/bulletins#index"
+    resources :bulletins, only: %i[index show]
+  end
 end

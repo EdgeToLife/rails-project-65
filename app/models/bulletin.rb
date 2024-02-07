@@ -4,11 +4,13 @@ class Bulletin < ApplicationRecord
   belongs_to :category
   belongs_to :creator, class_name: 'User', inverse_of: :bulletins
 
+  has_one_attached :image
+
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 1000 }
-  # validates :image, presence: true,
-  #                   content_type: %i[png jpg jpeg],
-  #                   size: { less_than: 5.megabytes }
+  validates :image, presence: true,
+                    content_type: %i[png jpg jpeg],
+                    size: { less_than: 5.megabytes }
 
   aasm column: 'state' do
     state :draft, initial: true
@@ -29,5 +31,9 @@ class Bulletin < ApplicationRecord
     event :archive do
       transitions from: [:draft, :under_moderation, :published, :rejected], to: :archived
     end
+  end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[title category state]
   end
 end

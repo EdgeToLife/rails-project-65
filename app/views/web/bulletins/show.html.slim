@@ -3,9 +3,13 @@
     h4
       =< @bulletin.title
     p
-      =< @bulletin.description
-    .d-flex.justify-content-between.small.text-muted.align-items-end
-      div
-        span.me-2
-          = @bulletin.creator.name
-
+    .col-8
+      .col-6
+      - if @bulletin.image_attachment
+        = image_tag(@bulletin.image, class: 'img-thumbnail mb-2')
+      p
+        =< @bulletin.description
+      .d-flex.justify-content-between.small.text-muted.align-items-end
+        .col-4
+          span.me-2
+            = @bulletin.creator.name

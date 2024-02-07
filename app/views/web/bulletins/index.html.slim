@@ -1,5 +1,19 @@
-h2
-  = t('bulletins.bulletins')
-#bulletins
-  - @bulletins.each do |bulletin|
-    == render 'bulletin', bulletin: bulletin
+.p-3.p-lg-5.pt-lg-0
+  .mb-4
+  h2
+    = t('.title')
+    hr
+  .p-3.bg-light
+    = search_form_for @search do |f|
+        .row.my-2
+          .col-5
+            = f.search_field :title_cont, class: 'form-control'
+          .col-4
+            = f.select :category, options_from_collection_for_select(Category.all, 'id', 'name'), { include_blank: t('.all_categories') }, class: 'form-select'
+          .col-3
+            = f.submit t('.search'), class: 'btn btn-primary me-2'
+            = link_to t('.reset_search'), url_for, class: 'btn btn-outline-primary'
+  #bulletins
+  .row.mt-2
+    - @bulletins.each do |bulletin|
+      == render 'bulletin', bulletin: bulletin

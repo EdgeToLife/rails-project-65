@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::AuthController < ApplicationController
   def callback
     user, is_new = authenticate_user(auth)
