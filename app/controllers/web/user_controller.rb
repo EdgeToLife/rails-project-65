@@ -6,10 +6,4 @@ class Web::UserController < ApplicationController
     @user_bulletins = @search.result(distinct: true)
     render 'web/bulletins/user_profile'
   end
-
-  private
-
-  def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :category_id, :state, :image)
-  end
 end

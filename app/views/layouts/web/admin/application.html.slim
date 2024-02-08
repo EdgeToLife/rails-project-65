@@ -1,0 +1,41 @@
+doctype html
+html.h-100
+  head
+    title
+      = 'Блог'
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta charset="utf-8"
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
+
+  body.d-flex.flex-column.h-100
+
+    = render 'layouts/shared/nav'
+
+    = render 'layouts/shared/flash'
+
+    main
+      .mt-4.mb-5.pb-5
+        .container
+          .p-4.align-items-center.border.shadow.bg-white.rounded-3
+            .row
+              .col-md-3
+                ul.nav.flex-column.nav-pills
+                  li.nav-item 
+                    = link_to t('.bulletins_on_moderation'), admin_profile_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
+                  li.nav-item 
+                    = link_to t('.all_bulletins'), admin_bulletins_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
+                  li.nav-item 
+                    = link_to t('.all_categories'), admin_categories_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
+              .col-md-9
+                = yield
+
+    footer.bg-dark.text-light.mt-auto
+      .container-xl
+        .row.py-2
+          = t('hexlet_copyright')
+          | ,&nbsp;
+          = Time.current.year
