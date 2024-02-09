@@ -13,7 +13,8 @@ install:
 	bin/rails db:reset
 
 db-prepare:
-	bin/rails db:reset
+	bin/rails db:drop
+	bin/rails db:migrate
 	bin/rails db:fixtures:load
 
 check: test lint

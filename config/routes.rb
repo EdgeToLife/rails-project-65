@@ -24,7 +24,7 @@ Rails.application.routes.draw do
           patch :archive
         end
       end
-      resources :categories
+      resources :categories, only: %i[index new create edit update destroy]
       # get '/bulletins', to: 'bulletin#index'
       # get '/categories', to: 'category#index'
     end

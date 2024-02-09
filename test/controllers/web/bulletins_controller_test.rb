@@ -1,17 +1,19 @@
 require "test_helper"
 
-class BulletinsControllerTest < ActionDispatch::IntegrationTest
+class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @states = ['draft', 'under_moderation', 'published', 'rejected', 'archived']
     @images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
     @bulletin = bulletins(:one)
+    @published_bulletin = bulletins(:three)
     @creator = @bulletin.creator
   end
 
-  test "should get index" do
+  test "should get bulletin index" do
     get bulletins_url
     assert_response :success
+    assert_select 'h4', text: @published_bulletin.title
   end
 
   test "should get new bulletin page" do
@@ -74,11 +76,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should move bulletin to moderation" do
     sign_in @creator
-
-    assert_no_difference('Bulletin.count') do
-      patch to_moderate_bulletin_url(@bulletin)
-    end
-
+    patch to_moderate_bulletin_url(@bulletin)
     @bulletin.reload
     assert_equal 'under_moderation', @bulletin.state
     assert_redirected_to user_profile_path
@@ -86,13 +84,16 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should archive bulletin" do
     sign_in @creator
-
-    assert_no_difference('Bulletin.count') do
-      patch archive_bulletin_path(@bulletin)
-    end
-
+    patch archive_bulletin_path(@bulletin)
     @bulletin.reload
     assert_equal 'archived', @bulletin.state
     assert_redirected_to user_profile_path
+  end
+
+  test "non-owner should be forbidden to archive bulletin" do
+    original_state = @bulletin.state
+    patch archive_bulletin_path(@bulletin)
+    assert_equal original_state, @bulletin.reload.state
+    assert_redirected_to root_path
   end
 end

@@ -1,0 +1,3 @@
+first_blob: <%= ActiveStorage::FixtureSet.blob filename: "image1.jpg", service_name: "test" %>
+second_blob: <%= ActiveStorage::FixtureSet.blob filename: "image2.jpg", service_name: "test" %>
+third_blob: <%= ActiveStorage::FixtureSet.blob filename: "image3.jpg", service_name: "test" %>

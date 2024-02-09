@@ -40,7 +40,7 @@ class Web::BulletinsController < ApplicationController
   def to_moderate
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
-    if @bulletin.aasm.current_state == :draft
+    if @bulletin.may_to_moderate?
       @bulletin.to_moderate!
     end
     redirect_to user_profile_path

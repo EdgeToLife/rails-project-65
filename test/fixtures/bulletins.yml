@@ -1,39 +1,34 @@
 one:
   title: Bulletin 1
   description: Description of Bulletin 1
-  creator: :one
-  category: :one
+  creator: one
+  category: one
   state: 'draft'
-  image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %>
 
 two:
   title: Bulletin 2
   description: Description of Bulletin 2
-  creator: :two
-  category: :two
+  creator: two
+  category: two
   state: 'under_moderation'
-  image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 
 
 three:
   title: Bulletin 3
   description: Description of Bulletin 3
-  creator: :two
-  category: :three
+  creator: two
+  category: three
   state: 'published'
-  image: <%= Rails.root.join("test", "fixtures", "files", "image3.jpg").to_s %> 
 
 four:
   title: Bulletin 4
   description: Description of Bulletin 4
-  creator: :one
-  category: :four
+  creator: one
+  category: four
   state: 'rejected'
-  image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %> 
 
 five:
   title: Bulletin 5
   description: Description of Bulletin 5
-  creator: :two
-  category: :one
+  creator: two
+  category: one
   state: 'archived'
-  image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 

@@ -29,6 +29,7 @@ ru:
   logout: 'Выйти'
   logout_confirmation: 'Вы действительно хотите выйти?'
   new_bulletin: 'Новое объявление'
+  not_allowed: 'Вы не авторизованы для выполнения этого действия.'
   profile: 'Профиль'
   respond: 'ответить'
   registration: 'Зарегистрироваться'
