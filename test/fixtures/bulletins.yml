@@ -1,11 +1,39 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   title: Bulletin 1
   description: Description of Bulletin 1
-  image: 
+  creator: :one
+  category: :one
+  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %>
 
 two:
   title: Bulletin 2
   description: Description of Bulletin 2
-  image: 
+  creator: :two
+  category: :two
+  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 
+
+three:
+  title: Bulletin 3
+  description: Description of Bulletin 3
+  creator: :two
+  category: :three
+  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  image: <%= Rails.root.join("test", "fixtures", "files", "image3.jpg").to_s %> 
+
+four:
+  title: Bulletin 4
+  description: Description of Bulletin 4
+  creator: :one
+  category: :four
+  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %> 
+
+five:
+  title: Bulletin 5
+  description: Description of Bulletin 5
+  creator: :two
+  category: :one
+  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 

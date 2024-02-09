@@ -48,6 +48,8 @@ gem 'aasm'
 
 gem 'ransack'
 
+gem 'kaminari'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'faker'
@@ -64,6 +66,7 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'minitest-power_assert'
 end
 
 group :production do

@@ -5,7 +5,8 @@ module Web
     class BulletinsController < ApplicationController
       def index
         @search = Bulletin.includes(:creator, :category).order('created_at DESC').ransack(params[:q])
-        @bulletins = @search.result(distinct: true)
+        @bulletins = @search.result(distinct: true).page(params[:page]).per(10)
+        authorize @bulletins
       end
 
       def archive

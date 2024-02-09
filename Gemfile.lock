@@ -143,6 +143,18 @@ GEM
       railties (>= 6.0.0)
     json (2.7.1)
     jwt (2.7.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -160,6 +172,9 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.21.2)
+    minitest-power_assert (0.3.1)
+      minitest
+      power_assert (>= 1.1)
     msgpack (1.7.2)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
@@ -206,6 +221,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
+    power_assert (2.0.3)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -377,6 +393,8 @@ DEPENDENCIES
   image_processing
   jbuilder
   jsbundling-rails
+  kaminari
+  minitest-power_assert
   omniauth
   omniauth-github
   omniauth-rails_csrf_protection

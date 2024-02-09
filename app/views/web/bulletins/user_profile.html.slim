@@ -2,6 +2,7 @@
 h2
   = t('.my_bulletins')
   hr
+= link_to t('.create'), new_bulletin_path, class: 'me-2'
 .p-3.bg-light
     = search_form_for @search, url: user_profile_path do |f|
       .row.my-2
@@ -33,3 +34,5 @@ h2
               = link_to t('.to_moderate'), to_moderate_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2'
             - if bulletin.may_archive?
               = link_to t('.archive'), archive_bulletin_path(bulletin), data: { turbo_method: :patch }, class: 'me-2 text-danger'
+  = paginate @user_bulletins
+  

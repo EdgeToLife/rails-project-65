@@ -4,7 +4,7 @@ module Web
   module Admin
     class CategoriesController < ApplicationController
       def index
-        @categories = Category.all
+        @categories = Category.all.page(params[:page]).per(10)
       end
 
       def new

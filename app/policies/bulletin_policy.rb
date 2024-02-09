@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
-class PostPolicy < ApplicationPolicy
-  # BEGIN
+class BulletinPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -15,19 +12,30 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.published? || (record.creator_id == user.id)
   end
 
   def edit?
-    user&.admin? || record.author_id == user&.id
+    record.creator_id == user.id
   end
 
   def update?
-    user&.admin? || record.author_id == user&.id
+    record.creator_id == user.id
   end
 
-  def destroy?
-    user&.admin?
+  def to_moderate?
+    record.creator_id == user.id
   end
-  # END
+
+  def archiive?
+    user.admin? || (record.creator_id == user.id)
+  end
+
+  def publish?
+    user.admin? && record.may_publish?
+  end
+
+  def reject?
+    user.admin?
+  end
 end

@@ -4,6 +4,7 @@ class Web::BulletinsController < ApplicationController
   def create
     @categories = Category.all
     @bulletin = current_user.bulletins.new(bulletin_params)
+    authorize @bulletin
 
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('.create_success')
@@ -14,16 +15,18 @@ class Web::BulletinsController < ApplicationController
 
   def edit
     @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
   end
 
   def index
     @search = Bulletin.where(state: 'published').includes(:creator).order('created_at DESC').ransack(params[:q])
-    @bulletins = @search.result(distinct: true)
+    @bulletins = @search.result(distinct: true).page(params[:page]).per(12)
   end
 
   def new
     if user_signed_in?
       @bulletin = current_user.bulletins.build
+      authorize @bulletin
     else
       redirect_to root
     end
@@ -31,10 +34,12 @@ class Web::BulletinsController < ApplicationController
 
   def show
     @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
   end
 
   def to_moderate
     @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     if @bulletin.aasm.current_state == :draft
         @bulletin.to_moderate!
     end
@@ -43,6 +48,7 @@ class Web::BulletinsController < ApplicationController
 
   def update
     @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     if @bulletin.update(bulletin_params)
       redirect_to bulletin_url(@bulletin), notice: t('.update_success')
     else
@@ -52,6 +58,7 @@ class Web::BulletinsController < ApplicationController
 
   def archive
     @bulletin = Bulletin.find(params[:id])
+    authorize @bulletin
     @bulletin.archive!
     redirect_to user_profile_path
   end
@@ -59,6 +66,6 @@ class Web::BulletinsController < ApplicationController
   private
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :category_id, :image)
+    params.require(:bulletin).permit(:title, :description, :category_id, :image, :page)
   end
 end

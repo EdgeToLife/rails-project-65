@@ -17,3 +17,5 @@
   .row.mt-2
     - @bulletins.each do |bulletin|
       == render 'bulletin', bulletin: bulletin
+    = paginate @bulletins
+    

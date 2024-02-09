@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
+
   helper_method :current_user, :user_signed_in?
 
   def user_signed_in?

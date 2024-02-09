@@ -9,3 +9,14 @@ two:
   name: User2
   email: User2@example.com
   admin: true
+
+three:
+  name: User3
+  email: User3@example.com
+  admin: false
+
+four:
+  name: User4
+  email: User4@example.com
+  admin: false
+  

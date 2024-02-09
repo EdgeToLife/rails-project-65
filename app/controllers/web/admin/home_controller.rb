@@ -10,7 +10,7 @@ module Web
       end
 
       def index
-        @bulletins = Bulletin.where(state: 'under_moderation').order('created_at DESC')
+        @bulletins = Bulletin.where(state: 'under_moderation').order('created_at DESC').page(params[:page]).per(10)
       end
 
       def publish
@@ -28,7 +28,6 @@ module Web
         end
         redirect_to admin_profile_url
       end
-
     end
   end
 end

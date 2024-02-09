@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-module Web
-  module Admin
-    class ApplicationController < ApplicationController
+class Web::Admin::ApplicationController < ApplicationController
+  before_action :authorize_admin
 
-    end
+  private
+
+  def authorize_admin
+    authorize current_user, :access_admin_panel?
   end
 end
