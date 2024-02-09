@@ -41,7 +41,7 @@ class Web::BulletinsController < ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     if @bulletin.aasm.current_state == :draft
-        @bulletin.to_moderate!
+      @bulletin.to_moderate!
     end
     redirect_to user_profile_path
   end

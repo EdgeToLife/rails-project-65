@@ -3,7 +3,7 @@ one:
   description: Description of Bulletin 1
   creator: :one
   category: :one
-  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  state: 'draft'
   image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %>
 
 two:
@@ -11,7 +11,7 @@ two:
   description: Description of Bulletin 2
   creator: :two
   category: :two
-  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  state: 'under_moderation'
   image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 
 
 three:
@@ -19,7 +19,7 @@ three:
   description: Description of Bulletin 3
   creator: :two
   category: :three
-  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  state: 'published'
   image: <%= Rails.root.join("test", "fixtures", "files", "image3.jpg").to_s %> 
 
 four:
@@ -27,7 +27,7 @@ four:
   description: Description of Bulletin 4
   creator: :one
   category: :four
-  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  state: 'rejected'
   image: <%= Rails.root.join("test", "fixtures", "files", "image1.jpg").to_s %> 
 
 five:
@@ -35,5 +35,5 @@ five:
   description: Description of Bulletin 5
   creator: :two
   category: :one
-  state: <%= %w[draft under_moderation published rejected archived].sample %>
+  state: 'archived'
   image: <%= Rails.root.join("test", "fixtures", "files", "image2.jpg").to_s %> 

@@ -27,7 +27,7 @@ class BulletinPolicy < ApplicationPolicy
     record.creator_id == user.id
   end
 
-  def archiive?
+  def archive?
     user.admin? || (record.creator_id == user.id)
   end
 
