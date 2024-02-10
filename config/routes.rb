@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       resources :bulletins, only: %i[archive index show publish reject ] do
         member do
           patch :archive
+          patch :publish
+          patch :reject
         end
       end
       resources :categories, only: %i[index new create edit update destroy]
