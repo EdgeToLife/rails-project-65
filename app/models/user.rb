@@ -8,5 +8,5 @@ class User < ApplicationRecord
       user.email = auth['info']['email']
     end
   end
-  has_many :bulletins, foreign_key: :creator, inverse_of: :creator, dependent: :destroy
+  has_many :bulletins, foreign_key: :user, inverse_of: :user, dependent: :destroy
 end

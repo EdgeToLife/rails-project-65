@@ -14,23 +14,23 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    user && (record.published? || (record.creator_id == user.id) || user.admin?)
+    user && (record.published? || (record.user_id == user.id) || user.admin?)
   end
 
   def edit?
-    user && (record.creator_id == user.id)
+    user && (record.user_id == user.id)
   end
 
   def update?
-    user && (record.creator_id == user.id)
+    user && (record.user_id == user.id)
   end
 
   def to_moderate?
-    user && (record.creator_id == user.id)
+    user && (record.user_id == user.id)
   end
 
   def archive?
-    user && (user.admin? || (record.creator_id == user.id))
+    user && (user.admin? || (record.user_id == user.id))
   end
 
   def publish?

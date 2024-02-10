@@ -10,7 +10,7 @@ module Web
       @images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
       @bulletin = bulletins(:one)
       @published_bulletin = bulletins(:three)
-      @creator = @bulletin.creator
+      @creator = @bulletin.user
     end
 
     test 'should get bulletin index' do

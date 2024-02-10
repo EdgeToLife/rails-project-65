@@ -4,7 +4,7 @@ module Web
   module Admin
     class BulletinsController < ApplicationController
       def index
-        @search = Bulletin.includes(:creator, :category).order('created_at DESC').ransack(params[:q])
+        @search = Bulletin.includes(:user, :category).order('created_at DESC').ransack(params[:q])
         @bulletins = @search.result(distinct: true).page(params[:page]).per(10)
         authorize @bulletins
       end

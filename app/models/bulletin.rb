@@ -4,7 +4,7 @@ class Bulletin < ApplicationRecord
   include AASM
 
   belongs_to :category
-  belongs_to :creator, class_name: 'User', inverse_of: :bulletins
+  belongs_to :user, class_name: 'User', inverse_of: :bulletins
 
   has_one_attached :image
 

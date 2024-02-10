@@ -1,34 +1,34 @@
 one:
   title: Bulletin 1
   description: Description of Bulletin 1
-  creator: one
+  user: one
   category: one
   state: 'draft'
 
 two:
   title: Bulletin 2
   description: Description of Bulletin 2
-  creator: two
+  user: two
   category: two
   state: 'under_moderation'
 
 three:
   title: Bulletin 3
   description: Description of Bulletin 3
-  creator: two
+  user: two
   category: three
   state: 'published'
 
 four:
   title: Bulletin 4
   description: Description of Bulletin 4
-  creator: one
+  user: one
   category: four
   state: 'rejected'
 
 five:
   title: Bulletin 5
   description: Description of Bulletin 5
-  creator: two
+  user: two
   category: one
   state: 'archived'

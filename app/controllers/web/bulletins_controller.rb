@@ -3,7 +3,7 @@
 module Web
   class BulletinsController < ApplicationController
     def index
-      @search = Bulletin.where(state: 'published').includes(:creator).order('created_at DESC').ransack(params[:q])
+      @search = Bulletin.where(state: 'published').includes(:user).order('created_at DESC').ransack(params[:q])
       @bulletins = @search.result(distinct: true).page(params[:page]).per(12)
     end
 
