@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
-class Web::Admin::ApplicationController < ApplicationController
-  before_action :authorize_admin
+module Web
+  module Admin
+    class ApplicationController < ApplicationController
+      before_action :authorize_admin
 
-  private
+      private
 
-  def authorize_admin
-    if current_user.present?
-      authorize current_user, :access_admin_panel?
-    else
-      flash[:alert] = t('.not_allowed')
-      redirect_to root_path
+      def authorize_admin
+        if current_user.present?
+          authorize current_user, :access_admin_panel?
+        else
+          flash[:alert] = t('.not_allowed')
+          redirect_to root_path
+        end
+      end
     end
   end
 end

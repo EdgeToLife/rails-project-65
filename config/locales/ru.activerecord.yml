@@ -2,12 +2,17 @@ ru:
   activerecord:
     attributes:
       bulletin:
+        category: 'Категория'
+        description: 'Описание'
         state:
           draft: 'Черновик'
           under_moderation: 'На модерации'
           published: 'Опубликовано'
           rejected: 'Отклонено'
           archived: 'В архиве'
+        title: 'Заголовок'
+      category:
+        name: 'Название'
     models:
       bulletin: 'Объявление'
       category: 'Категория'

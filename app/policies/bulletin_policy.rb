@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BulletinPolicy < ApplicationPolicy
   def index?
     true
@@ -36,6 +38,6 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def reject?
-    user && (user.admin?)
+    user&.admin?
   end
 end

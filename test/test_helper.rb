@@ -1,6 +1,8 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 OmniAuth.config.test_mode = true
 # OmniAuth.config.request_validation_phase = OmniAuth::AuthenticityTokenProtection.new(allow_if: ->(_env) { true })
@@ -15,9 +17,11 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
   end
+end
 
-  class ActionDispatch::IntegrationTest
-    def sign_in(user, options = {})
+module ActionDispatch
+  class IntegrationTest
+    def sign_in(user, _options = {})
       auth_hash = {
         provider: 'github',
         uid: '12345',

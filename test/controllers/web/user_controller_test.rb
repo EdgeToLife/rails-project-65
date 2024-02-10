@@ -1,18 +1,22 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Web::UserControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @user = users(:one)
-  end
+require 'test_helper'
 
-  test "Should get index" do
-    sign_in @user
-    get user_profile_url
-    assert_response :success
-  end
+module Web
+  class UserControllerTest < ActionDispatch::IntegrationTest
+    setup do
+      @user = users(:one)
+    end
 
-  test "Should not get index" do
-    get user_profile_url
-    assert_redirected_to root_path
+    test 'Should get index' do
+      sign_in @user
+      get user_profile_url
+      assert_response :success
+    end
+
+    test 'Should not get index' do
+      get user_profile_url
+      assert_redirected_to root_path
+    end
   end
 end

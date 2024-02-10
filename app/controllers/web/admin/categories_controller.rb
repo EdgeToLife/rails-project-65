@@ -11,6 +11,10 @@ module Web
         @category = Category.build
       end
 
+      def edit
+        @category = Category.find(params[:id])
+      end
+
       def create
         @category = Category.create(category_params)
 
@@ -19,10 +23,6 @@ module Web
         else
           render :new, status: :unprocessable_entity
         end
-      end
-
-      def edit
-        @category = Category.find(params[:id])
       end
 
       def update

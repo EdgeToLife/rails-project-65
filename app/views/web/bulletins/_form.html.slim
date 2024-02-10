@@ -5,9 +5,9 @@
   .form-inputs
     = f.input :title, label: t('title')
     = f.input :description, label: t('description')
-    = f.association :category, label: t('category')
+    = f.association :category, label: t('category'), required: true
     - if bulletin.image.attached?
-      = image_tag bulletin.image, class: "img-thumbnail col-2"
+      = image_tag bulletin.image, class: 'img-thumbnail col-2'
     p
     = f.label :image, t('.photo')
     = f.file_field :image, class: 'form-control-file file required form-control'

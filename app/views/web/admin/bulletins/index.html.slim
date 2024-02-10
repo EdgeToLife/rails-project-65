@@ -8,7 +8,7 @@ p
             = f.search_field :title_cont, class: 'form-control'
             .form-text.text-muted = t('.search_by_name_hint')
           .col-4
-            = f.select :state_in, Bulletin.aasm.states.map{ |s| [t(".#{s.name}"), s.name] }, { include_blank: t('.all_states') }, class: 'form-select'
+            = f.select :state_in, Bulletin.aasm.states.map { |s| [t(".#{s.name}"), s.name] }, { include_blank: t('.all_states') }, class: 'form-select'
             .form-text.text-muted = t('.search_by_state_hint')
           .col-3
             = f.submit t('.search'), class: 'btn btn-primary me-2'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -7,7 +9,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
 
 # 5.times do |_index|
 #   Category.create!(
@@ -33,19 +34,19 @@
 
 # Seed categories
 categories = Category.create([
-  { name: 'Category 1' },
-  { name: 'Category 2' },
-  { name: 'Category 3' }
-])
+                               { name: 'Category 1' },
+                               { name: 'Category 2' },
+                               { name: 'Category 3' }
+                             ])
 
 # Seed users
 users = User.create([
-  { name: 'John Doe', email: 'john@example.com', admin: true },
-  { name: 'Jane Smith', email: 'jane@example.com', admin: false }
-])
+                      { name: 'John Doe', email: 'john@example.com', admin: true },
+                      { name: 'Jane Smith', email: 'jane@example.com', admin: false }
+                    ])
 
 # Seed bulletins
-states = ['draft', 'under_moderation', 'published', 'rejected', 'archived']
+states = %w[draft under_moderation published rejected archived]
 images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
 
 50.times do |_index|
@@ -57,7 +58,7 @@ images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
     state: states.sample
   )
   b.image.attach(
-    io: File.open(File.join(Rails.root, "test/fixtures/files/#{images.sample}")),
+    io: File.open(Rails.root.join("test/fixtures/files/#{images.sample}").to_s),
     filename: images.sample
   )
   b.save

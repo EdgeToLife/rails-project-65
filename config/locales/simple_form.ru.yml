@@ -1,4 +1,4 @@
-en:
+ru:
   simple_form:
     "yes": 'Да'
     "no": 'Нет'
@@ -9,7 +9,7 @@ en:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Пожалуйста исправьте следующие ошибки:"
+      default_message: "Пожалуйста, исправьте следующие ошибки:"
     # Examples
     # labels:
     #   defaults:

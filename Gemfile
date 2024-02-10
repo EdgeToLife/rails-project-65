@@ -1,27 +1,29 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.2.2"
+source 'https://rubygems.org'
 
-gem "rails", "~> 7.1.3"
+ruby '3.2.2'
 
-gem "sprockets-rails"
+gem 'rails', '~> 7.1.3'
 
-gem "sqlite3", "~> 1.4"
+gem 'sprockets-rails'
 
-gem "puma", ">= 5.0"
+gem 'sqlite3', '~> 1.4'
 
-gem "jsbundling-rails"
+gem 'puma', '>= 5.0'
 
-gem "turbo-rails"
+gem 'jsbundling-rails'
 
-gem "stimulus-rails"
+gem 'turbo-rails'
 
-gem "cssbundling-rails"
+gem 'stimulus-rails'
 
-gem "jbuilder"
+gem 'cssbundling-rails'
 
-gem "sentry-ruby"
-gem "sentry-rails"
+gem 'jbuilder'
+
+gem 'sentry-rails'
+gem 'sentry-ruby'
 
 gem 'slim-rails', '~> 3.6', '>= 3.6.3'
 
@@ -29,9 +31,9 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 gem 'rails-i18n'
 
@@ -51,24 +53,24 @@ gem 'ransack'
 gem 'kaminari'
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ]
-  gem 'faker'
-  gem 'dotenv'
   gem 'byebug'
+  gem 'debug', platforms: %i[mri windows]
+  gem 'dotenv'
+  gem 'faker'
   gem 'rubocop-rails'
   gem 'slim_lint'
 end
 
 group :development do
-  gem "web-console"
+  gem 'web-console'
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'capybara'
   gem 'minitest-power_assert'
+  gem 'selenium-webdriver'
 end
 
 group :production do
-  gem "pg"
+  gem 'pg'
 end

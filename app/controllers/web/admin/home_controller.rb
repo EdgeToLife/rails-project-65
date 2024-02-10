@@ -15,17 +15,13 @@ module Web
 
       def publish
         @bulletin = Bulletin.find(params[:id])
-        if @bulletin.may_publish?
-          @bulletin.publish!
-        end
+        @bulletin.publish! if @bulletin.may_publish?
         redirect_to admin_profile_url, notice: t('.publish_success')
       end
 
       def reject
         @bulletin = Bulletin.find(params[:id])
-        if @bulletin.may_reject?
-          @bulletin.reject!
-        end
+        @bulletin.reject! if @bulletin.may_reject?
         redirect_to admin_profile_url, notice: t('.reject_success')
       end
     end
