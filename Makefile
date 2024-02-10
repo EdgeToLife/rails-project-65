@@ -10,7 +10,6 @@ install:
 	yarn build:css
 	bin/setup
 	bin/rails db:migrate
-	bin/rails db:reset
 
 db-prepare:
 	bin/rails db:drop
