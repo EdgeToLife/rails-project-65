@@ -1,10 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up', to: 'rails/health#show', as: :rails_health_check
 
   scope module: :web do
     root 'bulletins#index'
+
+    resources :bulletins, only: %i[new create edit update index show] do
+      patch :to_moderate, on: :member
+      patch :archive, on: :member
+    end
 
     post '/auth/:provider', to: 'auth#request', as: :auth_request
     get '/auth/:provider/callback', to: 'auth#callback', as: :callback_auth
@@ -12,32 +17,18 @@ Rails.application.routes.draw do
 
     namespace :admin do
       get '/', to: 'home#index', as: 'profile'
+
       resources :home, only: %i[archive index publish reject show] do
-        member do
-          patch :archive
-          patch :publish
-          patch :reject
-        end
+        %i[archive publish reject].each { |action| patch action, on: :member }
       end
-      resources :bulletins, only: %i[archive index show publish reject ] do
-        member do
-          patch :archive
-          patch :publish
-          patch :reject
-        end
+
+      resources :bulletins, only: %i[archive index show publish reject] do
+        %i[archive publish reject].each { |action| patch action, on: :member }
       end
-      resources :categories, only: %i[index new create edit update destroy]
+
+      resources :categories
     end
 
     get '/profile', to: 'user#user_profile'
-
-    resources :bulletins, only: %i[new create edit update], shallow: true do
-      member do
-        patch :to_moderate
-        patch :archive
-      end
-    end
-
-    resources :bulletins, only: %i[index show]
   end
 end
