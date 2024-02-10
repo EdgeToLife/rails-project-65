@@ -6,7 +6,7 @@ module Web
       def archive
         @bulletin = Bulletin.find(params[:id])
         @bulletin.archive!
-        redirect_to admin_profile_url
+        redirect_to admin_profile_url, notice: t('.archive_success')
       end
 
       def index
@@ -15,18 +15,18 @@ module Web
 
       def publish
         @bulletin = Bulletin.find(params[:id])
-        if @bulletin.aasm.current_state == :under_moderation
+        if @bulletin.may_publish?
           @bulletin.publish!
         end
-        redirect_to admin_profile_url
+        redirect_to admin_profile_url, notice: t('.publish_success')
       end
 
       def reject
         @bulletin = Bulletin.find(params[:id])
-        if @bulletin.aasm.current_state == :under_moderation
+        if @bulletin.may_reject?
           @bulletin.reject!
         end
-        redirect_to admin_profile_url
+        redirect_to admin_profile_url, notice: t('.reject_success')
       end
     end
   end

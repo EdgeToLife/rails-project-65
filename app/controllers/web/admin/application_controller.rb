@@ -6,6 +6,11 @@ class Web::Admin::ApplicationController < ApplicationController
   private
 
   def authorize_admin
-    authorize current_user, :access_admin_panel?
+    if current_user.present?
+      authorize current_user, :access_admin_panel?
+    else
+      flash[:alert] = t('.not_allowed')
+      redirect_to root_path
+    end
   end
 end

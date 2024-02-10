@@ -28,7 +28,7 @@ module Web
       def update
         @category = Category.find(params[:id])
         if @category.update(category_params)
-          redirect_to admin_categories_path, notice: t('.create_success')
+          redirect_to admin_categories_path, notice: t('.update_success')
         else
           render :edit, status: :unprocessable_entity
         end

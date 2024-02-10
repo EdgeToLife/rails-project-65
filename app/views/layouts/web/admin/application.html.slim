@@ -2,7 +2,7 @@ doctype html
 html.h-100
   head
     title
-      = 'Блог'
+      = t('.site_title')
     meta name="viewport" content="width=device-width, initial-scale=1"
     meta charset="utf-8"
     == csrf_meta_tags
@@ -27,9 +27,9 @@ html.h-100
                   li.nav-item 
                     = link_to t('.bulletins_on_moderation'), admin_profile_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
                   li.nav-item 
-                    = link_to t('.all_bulletins'), admin_bulletins_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
+                    = link_to t('.all_bulletins'), admin_bulletins_path, class: "nav-link link-dark #{active_class(admin_bulletins_path)}"
                   li.nav-item 
-                    = link_to t('.all_categories'), admin_categories_path, class: "nav-link link-dark #{active_class(admin_profile_path)}"
+                    = link_to t('.all_categories'), admin_categories_path, class: "nav-link link-dark #{'active' if request.path.starts_with?('/admin/categories')}"
               .col-md-9
                 = yield
 

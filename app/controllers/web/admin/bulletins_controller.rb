@@ -12,7 +12,7 @@ module Web
       def archive
         @bulletin = Bulletin.find(params[:id])
         @bulletin.archive!
-        redirect_to admin_bulletins_path
+        redirect_to admin_bulletins_path, notice: t('.archive_success')
       end
     end
   end

@@ -6,7 +6,7 @@ class Web::AuthController < ApplicationController
 
     sign_in user
 
-    redirect_to root_path
+    redirect_to root_path, notice: t('.success')
   end
 
   def sign_in(user)
@@ -19,7 +19,7 @@ class Web::AuthController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_path
+    redirect_to root_path, notice: t('.success')
   end
 
   private

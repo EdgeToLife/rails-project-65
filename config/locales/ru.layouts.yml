@@ -1,0 +1,11 @@
+ru:
+  layouts:
+    application:
+      site_title: 'Доска объявлений'
+    web:
+      admin:
+        application:
+          all_categories: 'Все категории'
+          all_bulletins: 'Все объявления'
+          bulletins_on_moderation: 'Объявления на модерации'
+          site_title: 'Доска объявлений'

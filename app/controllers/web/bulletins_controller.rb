@@ -28,7 +28,7 @@ class Web::BulletinsController < ApplicationController
       @bulletin = current_user.bulletins.build
       authorize @bulletin
     else
-      redirect_to root
+      redirect_to root, notice: t('.not_allowed')
     end
   end
 
@@ -43,7 +43,7 @@ class Web::BulletinsController < ApplicationController
     if @bulletin.may_to_moderate?
       @bulletin.to_moderate!
     end
-    redirect_to user_profile_path
+    redirect_to user_profile_path, notice: t('.to_moderate_success')
   end
 
   def update
@@ -60,12 +60,12 @@ class Web::BulletinsController < ApplicationController
     @bulletin = Bulletin.find(params[:id])
     authorize @bulletin
     @bulletin.archive!
-    redirect_to user_profile_path
+    redirect_to user_profile_path, notice: t('.archive_success')
   end
 
   private
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :category_id, :image, :page)
+    params.require(:bulletin).permit(:title, :description, :category_id, :image)
   end
 end
