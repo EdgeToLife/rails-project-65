@@ -19,17 +19,15 @@ Rails.application.routes.draw do
           patch :reject
         end
       end
-      resources :bulletins, only: %i[archive index show] do
+      resources :bulletins, only: %i[archive index show publish reject ] do
         member do
           patch :archive
         end
       end
       resources :categories, only: %i[index new create edit update destroy]
-      # get '/bulletins', to: 'bulletin#index'
-      # get '/categories', to: 'category#index'
     end
 
-    get '/profile', to: 'user#user_profile', as: 'user_profile'
+    get '/profile', to: 'user#user_profile'
 
     resources :bulletins, only: %i[new create edit update], shallow: true do
       member do

@@ -82,7 +82,7 @@ module Web
       patch to_moderate_bulletin_url(@bulletin)
       @bulletin.reload
       assert_equal 'under_moderation', @bulletin.state
-      assert_redirected_to user_profile_path
+      assert_redirected_to profile_path
     end
 
     test 'should archive bulletin' do
@@ -90,7 +90,7 @@ module Web
       patch archive_bulletin_path(@bulletin)
       @bulletin.reload
       assert_equal 'archived', @bulletin.state
-      assert_redirected_to user_profile_path
+      assert_redirected_to profile_path
     end
 
     test 'non-owner should be forbidden to archive bulletin' do

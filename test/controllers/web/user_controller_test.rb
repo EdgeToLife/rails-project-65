@@ -8,14 +8,14 @@ module Web
       @user = users(:one)
     end
 
-    test 'Should get index' do
+    test 'should get index' do
       sign_in @user
-      get user_profile_url
+      get profile_url
       assert_response :success
     end
 
-    test 'Should not get index' do
-      get user_profile_url
+    test 'should not get index' do
+      get profile_url
       assert_redirected_to root_path
     end
   end

@@ -14,6 +14,18 @@ module Web
         @bulletin.archive!
         redirect_to admin_bulletins_path, notice: t('.archive_success')
       end
+
+      def publish
+        @bulletin = Bulletin.find(params[:id])
+        @bulletin.publish! if @bulletin.may_publish?
+        redirect_to admin_profile_url, notice: t('.publish_success')
+      end
+
+      def reject
+        @bulletin = Bulletin.find(params[:id])
+        @bulletin.reject! if @bulletin.may_reject?
+        redirect_to admin_profile_url, notice: t('.reject_success')
+      end
     end
   end
 end

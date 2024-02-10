@@ -42,7 +42,7 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.to_moderate! if @bulletin.may_to_moderate?
-      redirect_to user_profile_path, notice: t('.to_moderate_success')
+      redirect_to profile_path, notice: t('.to_moderate_success')
     end
 
     def update
@@ -59,7 +59,7 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.archive!
-      redirect_to user_profile_path, notice: t('.archive_success')
+      redirect_to profile_path, notice: t('.archive_success')
     end
 
     private

@@ -3,7 +3,7 @@ h2
 hr
 = link_to t('.create'), new_bulletin_path, class: 'me-2'
 .p-3
-    = search_form_for @search, url: user_profile_path do |f|
+    = search_form_for @search, url: profile_path do |f|
       .row.my-2
         .col-5
           = f.search_field :title_cont, class: 'form-control'
