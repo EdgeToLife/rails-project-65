@@ -49,7 +49,7 @@ users = User.create([
 states = %w[draft under_moderation published rejected archived]
 images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
 
-50.times do |_index|
+5.times do |_index|
   b = Bulletin.create(
     title: Faker::Lorem.word,
     description: Faker::ChuckNorris.fact,
