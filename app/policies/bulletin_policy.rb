@@ -14,7 +14,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def show?
-    user && (record.published? || (record.user_id == user.id) || user.admin?)
+    record.published? || (user.present? && (record.user_id == user.id || user.admin?))
   end
 
   def edit?

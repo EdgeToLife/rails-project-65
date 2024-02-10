@@ -80,8 +80,12 @@ ru:
     bulletins:
       archive_success: 'Объявление архивировано'
       create_success: 'Объявление создано'
+      edit:
+        title: 'Редактировать объявление'
       form:
+        create: 'Создать объявление'
         photo: 'Фото'
+        save: 'Сохранить объявление'
       index:
         all_categories: 'Все категории'
         reset_search: 'Сброс'
@@ -92,8 +96,9 @@ ru:
       update_success: 'Объявление обновлено'
       new:
         title: 'Добавить объявление'
+      not_allowed: 'Вы не авторизованы для выполнения этого действия.'
       to_moderate_success: 'Отправлено на модерацию'
-      user_profile:
+      profile:
         actions: 'Действия'
         all_states: 'Все'
         archive: 'Архивировать'
