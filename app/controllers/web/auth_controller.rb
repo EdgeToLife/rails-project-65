@@ -31,9 +31,9 @@ module Web
 
     def authenticate_user(auth)
       existing_user = User.find_by(email: auth['info']['email'])
-      email = auth[:info][:email].downcase
-      name = auth[:info][:name]
-      user = existing_user || User.new(name, email)
+      e = auth[:info][:email].downcase
+      n = auth[:info][:name]
+      user = existing_user || User.new(name: n, email: e)
 
       is_new = false
 
