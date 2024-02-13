@@ -38,7 +38,7 @@ gem 'bootsnap', require: false
 gem 'rails-i18n'
 
 gem 'active_storage_validations'
-# gem 'aws-sdk-s3'
+gem 'aws-sdk-s3'
 gem 'file_validators'
 gem 'image_processing'
 
