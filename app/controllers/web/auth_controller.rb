@@ -33,7 +33,7 @@ module Web
       existing_user = User.find_by(email: auth['info']['email'])
       email = auth[:info][:email].downcase
       name = auth[:info][:name]
-      name = name.empty? ? email : name
+      name = email if name.empty?
       user = existing_user || User.new(name:, email:)
 
       is_new = false
