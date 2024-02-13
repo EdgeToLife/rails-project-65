@@ -10,6 +10,7 @@ module Web
         @admin = users(:two)
         @states = %w[draft under_moderation published rejected archived]
         @category = categories(:one)
+        @empty_category = categories(:five)
       end
 
       test 'should get category index page' do
@@ -50,10 +51,18 @@ module Web
         assert_redirected_to admin_categories_url
       end
 
-      test 'should destroy category' do
+      test 'should not destroy category which has depended bulletins' do
+        sign_in @admin
+        assert_no_difference('Category.count') do
+          delete admin_category_url(@category)
+        end
+        assert_redirected_to admin_category_url(@category)
+      end
+
+      test 'should destroy category without dependencies' do
         sign_in @admin
         assert_difference('Category.count', -1) do
-          delete admin_category_url(@category)
+          delete admin_category_url(@empty_category)
         end
         assert_redirected_to admin_categories_url
       end

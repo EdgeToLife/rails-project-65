@@ -1,16 +1,16 @@
 = simple_form_for(bulletin) do |f|
   = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  = f.error_notification message: f.object.errors.full_messages.to_sentence if f.object.errors.any?
 
   .form-inputs
     = f.input :title, label: t('title')
     = f.input :description, label: t('description')
     = f.association :category, label: t('category'), required: true
+    .form-group.file.required.bulletin_image
     - if bulletin.image.attached?
       = image_tag bulletin.image, class: 'img-thumbnail col-2'
-    p
-    = f.label :image, t('.photo')
-    = f.file_field :image, class: 'form-control-file file required form-control'
+    = f.input :image, as: :file, class: 'form-control-file file required form-control'
+
   p
   .form-actions
     - if f.object.new_record?

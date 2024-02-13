@@ -25,6 +25,7 @@ ru:
       bulletin_title: 'Объявление'
       categories:
         create_success: 'Категория создана'
+        destroy_failure: 'Не удалось удалить категорию, так как она содержит объявления'
         destroy_success: 'Категория удалена'
         edit:
           title: 'Редактировать категорию'
@@ -84,7 +85,6 @@ ru:
         title: 'Редактировать объявление'
       form:
         create: 'Создать объявление'
-        photo: 'Фото'
         save: 'Сохранить объявление'
       index:
         all_categories: 'Все категории'

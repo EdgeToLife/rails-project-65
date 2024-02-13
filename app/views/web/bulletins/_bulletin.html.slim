@@ -1,7 +1,7 @@
 .col-3.pt2 id="#{dom_id bulletin}"
   .card.shadow-sm
     - if bulletin.image_attachment
-      = image_tag bulletin.image, class: 'card-img-top x-object-fit-cover'
+      = image_tag bulletin.image, class: 'card-img-top x-object-fit-cover', height: 200
     .card-body
       h4
         =< link_to bulletin.title, bulletin, style: 'color: black; text-decoration: none;'

@@ -4,6 +4,7 @@ ru:
       bulletin:
         category: 'Категория'
         description: 'Описание'
+        image: 'Фото'
         state:
           draft: 'Черновик'
           under_moderation: 'На модерации'

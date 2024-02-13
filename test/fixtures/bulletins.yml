@@ -1,34 +1,34 @@
 one:
-  title: Bulletin 1
-  description: Description of Bulletin 1
+  title: 'Bulletin 1'
+  description: 'Description of Bulletin 1'
   user: one
   category: one
   state: 'draft'
 
 two:
-  title: Bulletin 2
-  description: Description of Bulletin 2
+  title: 'Bulletin 2'
+  description: 'Description of Bulletin 2'
   user: two
   category: two
   state: 'under_moderation'
 
 three:
-  title: Bulletin 3
-  description: Description of Bulletin 3
+  title: 'Bulletin 3'
+  description: 'Description of Bulletin 3'
   user: two
   category: three
   state: 'published'
 
 four:
-  title: Bulletin 4
-  description: Description of Bulletin 4
+  title: 'Bulletin 4'
+  description: 'Description of Bulletin 4'
   user: one
   category: four
   state: 'rejected'
 
 five:
-  title: Bulletin 5
-  description: Description of Bulletin 5
+  title: 'Bulletin 5'
+  description: 'Description of Bulletin 5'
   user: two
   category: one
   state: 'archived'

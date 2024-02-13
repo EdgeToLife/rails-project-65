@@ -17,7 +17,7 @@ module Web
         @bulletin = current_user.bulletins.build
         authorize @bulletin
       else
-        redirect_to root, notice: t('.not_allowed')
+        redirect_to root_path, notice: t('.not_allowed')
       end
     end
 
