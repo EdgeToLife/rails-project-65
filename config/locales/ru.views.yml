@@ -2,6 +2,7 @@ ru:
   web:
     admin:
       bulletins:
+        archive_success: 'Объявление архивировано'
         index:
           actions: 'Действия'
           all_states: 'Все'

@@ -7,7 +7,7 @@
     = f.input :description, label: t('description')
     = f.association :category, label: t('category'), required: true
     .form-group.file.required.bulletin_image
-    - if bulletin.image.attached?
+    - if bulletin.image.attached? && !bulletin.image.attachment.new_record?
       = image_tag bulletin.image, class: 'img-thumbnail col-2'
     = f.input :image, as: :file, class: 'form-control-file file required form-control'
 
