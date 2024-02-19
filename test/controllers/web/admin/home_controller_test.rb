@@ -6,13 +6,13 @@ module Web
   module Admin
     class HomeControllerTest < ActionDispatch::IntegrationTest
       setup do
-        @admin = users(:two)
-        @bulletin = bulletins(:two)
+        @admin = users(:admin)
+        @bulletin = bulletins(:under_moderation)
       end
 
       test 'should get admin profile' do
         sign_in @admin
-        get admin_profile_url
+        get admin_url
         assert_response :success
       end
 
@@ -21,7 +21,7 @@ module Web
         patch publish_admin_home_path(@bulletin)
         @bulletin.reload
         assert_equal 'published', @bulletin.state
-        assert_redirected_to admin_profile_url
+        assert_redirected_to admin_url
       end
 
       test 'should reject bulletin' do
@@ -29,7 +29,7 @@ module Web
         patch reject_admin_home_path(@bulletin)
         @bulletin.reload
         assert_equal 'rejected', @bulletin.state
-        assert_redirected_to admin_profile_url
+        assert_redirected_to admin_url
       end
 
       test 'should archive bulletin' do
@@ -37,7 +37,7 @@ module Web
         patch archive_admin_home_path(@bulletin)
         @bulletin.reload
         assert_equal 'archived', @bulletin.state
-        assert_redirected_to admin_profile_url
+        assert_redirected_to admin_url
       end
     end
   end

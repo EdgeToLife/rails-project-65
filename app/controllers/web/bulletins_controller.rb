@@ -3,8 +3,8 @@
 module Web
   class BulletinsController < ApplicationController
     def index
-      @search = Bulletin.where(state: 'published').includes(:user).order('created_at DESC').ransack(params[:q])
-      @bulletins = @search.result(distinct: true).page(params[:page]).per(12)
+      @search = Bulletin.where(state: 'published').order('created_at DESC').ransack(params[:q])
+      @bulletins = @search.result.page(params[:page]).per(12)
     end
 
     def show
@@ -13,12 +13,8 @@ module Web
     end
 
     def new
-      if user_signed_in?
-        @bulletin = current_user.bulletins.build
-        authorize @bulletin
-      else
-        redirect_to root_path, notice: t('.not_allowed')
-      end
+      user_authorize
+      @bulletin = current_user.bulletins.build
     end
 
     def edit
@@ -27,10 +23,8 @@ module Web
     end
 
     def create
-      @categories = Category.all
+      user_authorize
       @bulletin = current_user.bulletins.new(bulletin_params)
-      authorize @bulletin
-
       if @bulletin.save
         redirect_to bulletin_url(@bulletin), notice: t('.create_success')
       else
@@ -58,7 +52,7 @@ module Web
     def archive
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
-      @bulletin.archive!
+      @bulletin.archive! if @bulletin.may_archive?
       redirect_to profile_path, notice: t('.archive_success')
     end
 

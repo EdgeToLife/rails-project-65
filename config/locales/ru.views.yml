@@ -23,6 +23,8 @@ ru:
           state: 'Состояние'
           title: 'Все объявления'
           under_moderation: 'На модерации'
+        publish_success: 'Объявление опубликовано'
+        reject_success: 'Объявление отклонено'
       bulletin_title: 'Объявление'
       categories:
         create_success: 'Категория создана'
@@ -60,8 +62,6 @@ ru:
           show: 'Показать'
           state: 'Состояние'
         not_allowed: 'Вы не авторизованы для выполнения этого действия.'
-        publish_success: 'Объявление опубликовано'
-        reject_success: 'Объявление отклонено'
       update_success: 'Объявление успешно обновлено.'
       user_profile:
         actions: 'Действия'
@@ -99,7 +99,8 @@ ru:
         title: 'Добавить объявление'
       not_allowed: 'Вы не авторизованы для выполнения этого действия.'
       to_moderate_success: 'Отправлено на модерацию'
-      profile:
+    user:
+      user_profile:
         actions: 'Действия'
         all_states: 'Все'
         archive: 'Архивировать'
@@ -109,6 +110,7 @@ ru:
         draft: 'Черновик'
         edit: 'Редактировать'
         name: 'Название'
+        not_allowed: 'Вы не авторизованы для выполнения этого действия.'
         published: 'Опубликовано'
         rejected: 'Отклонено'
         reset_search: 'Сброс'
@@ -120,5 +122,3 @@ ru:
         title: 'Мои объявления'
         to_moderate: 'На модерацию'
         under_moderation: 'На модерации'
-    user:
-      not_allowed: 'Вы не авторизованы для выполнения этого действия.'

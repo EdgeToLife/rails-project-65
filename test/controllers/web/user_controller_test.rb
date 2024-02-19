@@ -5,7 +5,7 @@ require 'test_helper'
 module Web
   class UserControllerTest < ActionDispatch::IntegrationTest
     setup do
-      @user = users(:one)
+      @user = users(:user)
     end
 
     test 'should get index' do

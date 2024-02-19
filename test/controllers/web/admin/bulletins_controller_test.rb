@@ -6,8 +6,8 @@ module Web
   module Admin
     class BulletinsControllerTest < ActionDispatch::IntegrationTest
       setup do
-        @admin = users(:two)
-        @bulletin = bulletins(:two)
+        @admin = users(:admin)
+        @bulletin = bulletins(:under_moderation)
       end
 
       test 'should get admin bulletins index page' do

@@ -1,25 +1,14 @@
 bulletin_image1:
   name: image
-  record: one (Bulletin)
+  record: draft (Bulletin)
   blob: first_blob
 
 bulletin_image2:
   name: image
-  record: two (Bulletin)
+  record: under_moderation (Bulletin)
   blob: second_blob
 
 bulletin_image3:
   name: image
-  record: three (Bulletin)
+  record: published (Bulletin)
   blob: third_blob
-
-bulletin_image4:
-  name: image
-  record: four (Bulletin)
-  blob: first_blob
-
-bulletin_image5:
-  name: image
-  record: five (Bulletin)
-  blob: second_blob
-  

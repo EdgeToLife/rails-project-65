@@ -6,25 +6,29 @@ module Web
       def index
         @search = Bulletin.includes(:user, :category).order('created_at DESC').ransack(params[:q])
         @bulletins = @search.result(distinct: true).page(params[:page]).per(10)
-        authorize @bulletins
       end
 
       def archive
         @bulletin = Bulletin.find(params[:id])
-        @bulletin.archive!
-        redirect_to admin_bulletins_path, notice: t('.archive_success')
+        @bulletin.archive! if @bulletin.may_archive?
+        current_path = request.path
+        if current_path.include?('admin/bulletins')
+          redirect_back(fallback_location: admin_bulletins_path, notice: t('.archive_success'))
+        else
+          redirect_back(fallback_location: admin_path, notice: t('.archive_success'))
+        end
       end
 
       def publish
         @bulletin = Bulletin.find(params[:id])
         @bulletin.publish! if @bulletin.may_publish?
-        redirect_to admin_profile_url, notice: t('.publish_success')
+        redirect_to admin_url, notice: t('.publish_success')
       end
 
       def reject
         @bulletin = Bulletin.find(params[:id])
         @bulletin.reject! if @bulletin.may_reject?
-        redirect_to admin_profile_url, notice: t('.reject_success')
+        redirect_to admin_url, notice: t('.reject_success')
       end
     end
   end

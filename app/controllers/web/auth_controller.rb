@@ -4,18 +4,8 @@ module Web
   class AuthController < ApplicationController
     def callback
       user, = authenticate_user(auth)
-
       sign_in user
-
       redirect_to root_path, notice: t('.success')
-    end
-
-    def sign_in(user)
-      session[:user_id] = user.id
-    end
-
-    def sign_out
-      session.delete(:user_id)
     end
 
     def destroy
@@ -30,21 +20,14 @@ module Web
     end
 
     def authenticate_user(auth)
-      existing_user = User.find_by(email: auth['info']['email'])
       email = auth[:info][:email].downcase
       name = auth[:info][:name]
-      name = email if name.nil?
-      user = existing_user || User.new(name:, email:)
-
-      is_new = false
+      user = User.find_or_initialize_by(name:, email:)
 
       ActiveRecord::Base.transaction do
-        if user.new_record?
-          is_new = true
-          user.save!
-        end
+        user.save! if user.new_record?
       end
-      [user, is_new]
+      [user]
     end
   end
 end

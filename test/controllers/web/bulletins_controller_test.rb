@@ -5,11 +5,11 @@ require 'test_helper'
 module Web
   class BulletinsControllerTest < ActionDispatch::IntegrationTest
     setup do
-      @user = users(:one)
+      @user = users(:user)
       @states = %w[draft under_moderation published rejected archived]
       @images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
-      @bulletin = bulletins(:one)
-      @published_bulletin = bulletins(:three)
+      @bulletin = bulletins(:draft)
+      @published_bulletin = bulletins(:published)
       @creator = @bulletin.user
     end
 

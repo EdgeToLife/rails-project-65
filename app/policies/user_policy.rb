@@ -11,8 +11,4 @@ class UserPolicy
   def access_admin_panel?
     @user.admin?
   end
-
-  def access_profile?
-    current_user
-  end
 end

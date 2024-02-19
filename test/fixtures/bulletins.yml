@@ -1,34 +1,20 @@
-one:
+draft:
   title: 'Bulletin 1'
   description: 'Description of Bulletin 1'
-  user: one
+  user: user
   category: one
   state: 'draft'
 
-two:
+under_moderation:
   title: 'Bulletin 2'
   description: 'Description of Bulletin 2'
-  user: two
+  user: admin
   category: two
   state: 'under_moderation'
 
-three:
+published:
   title: 'Bulletin 3'
   description: 'Description of Bulletin 3'
-  user: two
+  user: admin
   category: three
   state: 'published'
-
-four:
-  title: 'Bulletin 4'
-  description: 'Description of Bulletin 4'
-  user: one
-  category: four
-  state: 'rejected'
-
-five:
-  title: 'Bulletin 5'
-  description: 'Description of Bulletin 5'
-  user: two
-  category: one
-  state: 'archived'
