@@ -8,11 +8,7 @@ module AuthConcern
   end
 
   def user_authorize
-    if user_signed_in?
-      true
-    else
-      user_not_authorized
-    end
+    user_not_authorized unless user_signed_in?
   end
 
   def user_signed_in?
@@ -29,7 +25,6 @@ module AuthConcern
 
   def sign_out
     session.delete(:user_id)
-    # session.clear
   end
 
   private

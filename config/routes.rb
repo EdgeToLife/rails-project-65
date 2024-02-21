@@ -16,24 +16,20 @@ Rails.application.routes.draw do
     delete '/auth', to: 'auth#destroy', as: :destroy_user_session
 
     namespace :admin do
-      get '/', to: 'home#index'
+      root 'home#index'
 
-      resources :home, only: %i[index] do
-        patch :archive, on: :member, controller: 'bulletins'
-        patch :publish, on: :member, controller: 'bulletins'
-        patch :reject, on: :member, controller: 'bulletins'
-        patch :show, on: :member, controller: 'bulletins'
-      end
+      resources :home, only: %i[index]
 
-      resources :bulletins, only: %i[index show] do
+      resources :bulletins, only: %i[index] do
         patch :archive, on: :member
         patch :publish, on: :member
         patch :reject, on: :member
       end
 
-      resources :categories, except: :show
+      resources :categories, only: %i[create destroy edit index new update]
     end
 
-    get 'profile', action: :user_profile, controller: 'user'
+    # get 'profile', action: :profile, controller: 'user'
+    resource :profile, only: %i[show]
   end
 end

@@ -2,22 +2,26 @@
 
 class BulletinPolicy < ApplicationPolicy
   def show?
-    record.published? || (user.present? && (record.user_id == user.id || user.admin?))
+    record.published? || owner? || user&.admin?
   end
 
   def edit?
-    user && (record.user_id == user.id)
+    user && owner?
   end
 
   def update?
-    user && (record.user_id == user.id)
+    user && owner?
   end
 
   def to_moderate?
-    user && (record.user_id == user.id)
+    user && owner?
   end
 
   def archive?
-    user && (user.admin? || (record.user_id == user.id))
+    user && (user.admin? || owner?)
+  end
+
+  def owner?
+    record.user_id == user&.id
   end
 end

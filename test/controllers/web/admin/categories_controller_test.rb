@@ -6,9 +6,7 @@ module Web
   module Admin
     class CategoriesControllerTest < ActionDispatch::IntegrationTest
       setup do
-        @user = users(:user)
         @admin = users(:admin)
-        @states = %w[draft under_moderation published rejected archived]
         @category = categories(:one)
         @empty_category = categories(:five)
       end

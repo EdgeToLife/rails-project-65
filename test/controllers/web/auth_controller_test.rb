@@ -29,5 +29,15 @@ module Web
       assert user
       assert signed_in?
     end
+
+    test 'should destroy session and redirect to root' do
+      user = users(:user)
+      sign_in user
+
+      delete destroy_user_session_url
+
+      assert_nil session[:user_id]
+      assert_redirected_to root_path
+    end
   end
 end

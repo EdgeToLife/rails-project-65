@@ -6,7 +6,6 @@ module Web
   class BulletinsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user = users(:user)
-      @states = %w[draft under_moderation published rejected archived]
       @images = ['image1.jpg', 'image2.jpg', 'image3.jpg']
       @bulletin = bulletins(:draft)
       @published_bulletin = bulletins(:published)
@@ -41,6 +40,7 @@ module Web
       end
       bulletin = Bulletin.find_by(attrs.except(:image))
       assert { bulletin }
+      assert bulletin.draft?
       assert_redirected_to bulletin_path(bulletin)
       assert_response :redirect
     end
@@ -81,7 +81,7 @@ module Web
       sign_in @creator
       patch to_moderate_bulletin_url(@bulletin)
       @bulletin.reload
-      assert_equal 'under_moderation', @bulletin.state
+      assert @bulletin.under_moderation?
       assert_redirected_to profile_path
     end
 
@@ -89,7 +89,7 @@ module Web
       sign_in @creator
       patch archive_bulletin_path(@bulletin)
       @bulletin.reload
-      assert_equal 'archived', @bulletin.state
+      assert @bulletin.archived?
       assert_redirected_to profile_path
     end
 

@@ -23,7 +23,7 @@
                     = t('create_bulletin')
                     li.nav-item
                 - if current_user.admin?
-                  = link_to admin_url, class: 'nav-link link-dark' do
+                  = link_to admin_root_url, class: 'nav-link link-dark' do
                     = t('admin')
                     li.nav-item
               - else

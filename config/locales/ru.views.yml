@@ -99,8 +99,8 @@ ru:
         title: 'Добавить объявление'
       not_allowed: 'Вы не авторизованы для выполнения этого действия.'
       to_moderate_success: 'Отправлено на модерацию'
-    user:
-      user_profile:
+    profiles:
+      show:
         actions: 'Действия'
         all_states: 'Все'
         archive: 'Архивировать'
