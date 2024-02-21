@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       resources :categories, only: %i[create destroy edit index new update]
     end
 
-    # get 'profile', action: :profile, controller: 'user'
     resource :profile, only: %i[show]
   end
 end
