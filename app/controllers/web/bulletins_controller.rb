@@ -2,6 +2,8 @@
 
 module Web
   class BulletinsController < ApplicationController
+    before_action :user_authorize, only: [:new, :create]
+
     def index
       @search = Bulletin.where(state: 'published').order('created_at DESC').ransack(params[:q])
       @bulletins = @search.result.page(params[:page]).per(12)
@@ -13,7 +15,6 @@ module Web
     end
 
     def new
-      user_authorize
       @bulletin = current_user.bulletins.build
     end
 
@@ -23,7 +24,6 @@ module Web
     end
 
     def create
-      user_authorize
       @bulletin = current_user.bulletins.new(bulletin_params)
       if @bulletin.save
         redirect_to bulletin_url(@bulletin), notice: t('.create_success')

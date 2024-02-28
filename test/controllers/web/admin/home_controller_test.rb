@@ -7,7 +7,6 @@ module Web
     class HomeControllerTest < ActionDispatch::IntegrationTest
       setup do
         @admin = users(:admin)
-        @bulletin = bulletins(:under_moderation)
       end
 
       test 'should get admin profile' do

@@ -18,8 +18,6 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'home#index'
 
-      resources :home, only: %i[index]
-
       resources :bulletins, only: %i[index] do
         patch :archive, on: :member
         patch :publish, on: :member

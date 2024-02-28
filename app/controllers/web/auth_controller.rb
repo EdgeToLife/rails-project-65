@@ -23,11 +23,10 @@ module Web
       email = auth[:info][:email].downcase
       name = auth[:info][:name]
       user = User.find_or_initialize_by(email:)
-      if user.name != name
-        user.name = name
-        user.save!
+      user.name = name
+      unless user.save!
+        redirect_to root_path, notice: t('.fail')
       end
-
       user
     end
   end
