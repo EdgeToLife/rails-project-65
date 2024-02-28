@@ -24,9 +24,7 @@ module Web
       name = auth[:info][:name]
       user = User.find_or_initialize_by(email:)
       user.name = name
-      unless user.save!
-        redirect_to root_path, notice: t('.fail')
-      end
+      redirect_to root_path, notice: t('.fail') unless user.save!
       user
     end
   end

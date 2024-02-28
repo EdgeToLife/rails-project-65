@@ -2,7 +2,7 @@
 
 module Web
   class BulletinsController < ApplicationController
-    before_action :user_authorize, only: [:new, :create]
+    before_action :user_authorize, only: %i[new create]
 
     def index
       @search = Bulletin.where(state: 'published').order('created_at DESC').ransack(params[:q])
